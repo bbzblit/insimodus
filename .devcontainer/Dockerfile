@@ -2,14 +2,13 @@
 FROM ubuntu:24.04
 
 ENV DOCKER_BUILDKIT=1
+# macht mise global verfügbar
+ENV PATH="/root/.local/bin:${PATH}"
 
 # Install Nginx
 RUN apt-get -y update \
   && apt-get -y install nginx git curl gnupg software-properties-common --no-install-recommends \
   && rm -rf /var/lib/apt/lists/*
-
-# Expose the port for access
-EXPOSE 3000/tcp
 
 # Run the Nginx server
 CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
@@ -21,17 +20,21 @@ CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
 SHELL ["/bin/bash", "-c"]
 
 ## Common tools
-RUN apt-get -y update && apt-get -y install neovim jq less openssl openssh-client gpg wget zip unzip autoconf patch build-essential rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev --no-install-recommends
+RUN apt-get -y update && apt-get -y install neovim jq less openssl\
+  openssh-client gpg wget zip unzip autoconf patch build-essential\
+  rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev\
+  libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev\
+  --no-install-recommends
 
 ## Mise
 RUN curl https://mise.run | sh \
   && echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc
 
 ## Java
-# RUN  ~/.local/bin/mise use java@lts -g
+# RUN mise use java@lts -g
 
 ## Nodejs
-# RUN  ~/.local/bin/mise use node@lts -g
+# RUN mise use node@lts -g
 
 # Funky Terminal
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.2.0/zsh-in-docker.sh)" -- \
@@ -59,10 +62,8 @@ RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/
 #   && echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com bookworm main" | tee /etc/apt/sources.list.d/hashicorp.list \
 #   && apt-get update && apt-get -y install terraform=1.9.2-* --no-install-recommends
 
-## Kamal via mise and ruby
-# RUN curl https://mise.run | sh \
-#   && echo 'eval "$(~/.local/bin/mise activate bash)"' >> ~/.bashrc \
-#   && ~/.local/bin/mise use --global ruby@3.2.2 \
-#   && ~/.local/share/mise/installs/ruby/3.2.2/bin/gem install kamal
+## Kamal via mise and ruby: https://mise.jdx.dev/cli/exec.html
+# RUN mise use ruby@3.2.2 -g \
+#   && mise x -- gem install kamal -v 1.9.2
 
 WORKDIR /workspace

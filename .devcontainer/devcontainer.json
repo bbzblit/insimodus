@@ -4,7 +4,9 @@
   "name": "Existing Docker Compose (Extend)",
   // Update the 'dockerComposeFile' list if you have more compose files or use different names.
   // The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
-  "dockerComposeFile": ["../docker-compose.yml"],
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
   //"overrideCommand": false,
   //"postStartCommand": "/usr/sbin/nginx -g 'daemon off;'",
   // The 'service' property is the name of the service for the container that VS Code should
@@ -19,16 +21,26 @@
     "ghcr.io/devcontainers/features/docker-in-docker:2": {}
   },
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  // "forwardPorts": [80]
+  "forwardPorts": [3000,3001],
   // Uncomment the next line if you want start specific services in your Docker Compose config.
-  "runServices": ["devcontainer"],
+  "runServices": [
+    "devcontainer"
+  ],
   "customizations": {
     "vscode": {
       "extensions": [
         "vivaxy.vscode-conventional-commits",
         "EditorConfig.EditorConfig",
         "ms-azuretools.vscode-docker"
-      ]
+      ],
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "zsh",
+        "terminal.integrated.profiles.linux": {
+          "zsh": {
+            "path": "/usr/bin/zsh"
+          }
+        }
+      }
     }
   }
   // Uncomment the next line if you want to keep your containers running after VS Code shuts down.
@@ -40,4 +52,3 @@
   // Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
   // "remoteUser": "devcontainer"
 }
-
