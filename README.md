@@ -11,6 +11,11 @@ Ein einfacher Budget-Tracker zur Verwaltung persönlicher Finanzen um der Insolv
 - Datenvisualisierung: Chart.js (oder eine andere JavaScript-Bibliothek für Charts)
 - Speicherung: JSON-Dateien zur lokalen Speicherung der Transaktionsdaten (im Browser)
 
+## 📱 Views
+![image](https://github.com/user-attachments/assets/35313d44-1825-40cd-9e34-612b1f29c5f9)
+![image](https://github.com/user-attachments/assets/40ed27a6-fd40-44db-b97c-a3f36c0cf8f7)
+
+
 <br>
 
 ---
