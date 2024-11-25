@@ -13,7 +13,7 @@ services:
     ports:
       - "3000:3000"
     # INFO: auskommentieren, sobald "local" Ordner existiert
-    # env_file: ./local/.env
+    # env_file: ./local/.envFROM node
     volumes:
       # sync workspace
       - .:/workspace:cached
@@ -27,7 +27,7 @@ services:
       # - ./local/ssh/id_rsa.pem:/root/.ssh/id_rsa.pem
   production:
     build:
-      context: ./nginx
+      context: .
       dockerfile: Dockerfile
     ports:
       - "3001:3000"
