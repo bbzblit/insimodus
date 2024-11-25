@@ -1,33 +1,15 @@
 services:
   devcontainer:
-    build:
-      context: .
-      dockerfile: .devcontainer/Dockerfile
-    # Loop to not get down
-    command: /bin/sh -c "while sleep 1000; do :; done"
-    # start nginx
-    # command: /usr/sbin/nginx -g "daemon off;"
+    image: node:18-bookworm
+    command: /bin/bash -c "npm i && npm run docker"
     working_dir: /workspace
     container_name: devcontainer
     init: true
     ports:
-      - "3000:3000"
-    # INFO: auskommentieren, sobald "local" Ordner existiert
-    # env_file: ./local/.envFROM node
+      # ***************************************************
+      # DO NOT REMOVE THE MAPPER FOR LOCALHOST (127.0.0.1)
+      # IF YOU DO IT YOU MIGHT GET HACKED
+      # ***************************************************
+      - "127.0.0.1:5173:5173" 
     volumes:
-      # sync workspace
       - .:/workspace:cached
-
-      # sync nginx files
-      - ./nginx/src/:/usr/share/nginx/html
-      - ./nginx/default:/etc/nginx/sites-available/default
-
-      # INFO: auskommentieren, sobald "local" Ordner existiert
-      # - ./local/aws:/root/.aws
-      # - ./local/ssh/id_rsa.pem:/root/.ssh/id_rsa.pem
-  production:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "3001:3000"
