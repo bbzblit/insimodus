@@ -1,7 +1,7 @@
 # General ------------------
 
 terraform {
-  required_version = "~> 1.9.2"
+ # required_version = "~> 1.9.2"
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -130,7 +130,7 @@ output "ubuntu2404_public_ip" {
 
 # INFO : https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ecr_repository
 resource "aws_ecr_repository" "myecr" {
-  name                 = "m324/nginx"
+  name                 = "m324/insimodus"
   image_tag_mutability = "MUTABLE"
   encryption_configuration {
     encryption_type = "KMS"
