@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.0.0 (2024-12-09)
+
+
+### Features
+
+* Add lint to pipeline [#44](https://github.com/bbzblit/insimodus/issues/44) ([#45](https://github.com/bbzblit/insimodus/issues/45)) ([b0c99fb](https://github.com/bbzblit/insimodus/commit/b0c99fb0297e23c866f149c06ef551ea377fe65d))
+* Add tests to pipeline ([#43](https://github.com/bbzblit/insimodus/issues/43)) ([aba50cc](https://github.com/bbzblit/insimodus/commit/aba50cce10379ea32ef942fb6b5a96bd073096e4))
+* deploy-to-aws ([#38](https://github.com/bbzblit/insimodus/issues/38)) ([61e8ed3](https://github.com/bbzblit/insimodus/commit/61e8ed3e3f41f95c01be7cc87a21d0814b1c1b83))
+* **devcontainer:** Better mise support in Dockerfile ([#11](https://github.com/bbzblit/insimodus/issues/11)) ([b529f47](https://github.com/bbzblit/insimodus/commit/b529f475555e2d40035ebae8c609ac10147675a6))
+
+
+### Bug Fixes
+
+* Updated nginx.conf file ([b585677](https://github.com/bbzblit/insimodus/commit/b58567746ec1e85d81fd09a8eed933e14cc94f77))
+
 ## 1.0.0 (2024-10-26)
 
 
