@@ -10,6 +10,12 @@ services:
       # DO NOT REMOVE THE MAPPER FOR LOCALHOST (127.0.0.1)
       # IF YOU DO IT YOU MIGHT GET HACKED
       # ***************************************************
-      - "127.0.0.1:5173:5173" 
+      - '127.0.0.1:5173:5173'
     volumes:
       - .:/workspace:cached
+  production:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'

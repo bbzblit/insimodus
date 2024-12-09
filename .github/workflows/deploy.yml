@@ -3,12 +3,13 @@ name: Deploy to Amazon AWS
 
 on:
   workflow_dispatch:
+  pull_request:
   push:
-    branches: ["main"]
+    branches: ['main']
 
 env:
   AWS_REGION: us-east-1
-  DOCKER_IMAGE_NAME: m324/nginx
+  DOCKER_IMAGE_NAME: m324/insimodus
 
 permissions:
   contents: read
@@ -58,8 +59,8 @@ jobs:
         working-directory: kamal
         env:
           KAMAL_SERVER_IP: ${{ env.SERVER_IP }}
-          KAMAL_REGISTRY: "not-used-to-push-envs"
-          KAMAL_REGISTRY_PASSWORD: "not-used-to-push-envs"
+          KAMAL_REGISTRY: 'not-used-to-push-envs'
+          KAMAL_REGISTRY_PASSWORD: 'not-used-to-push-envs'
         run: |
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           to_envs() { jq -r "( . // {} ) | to_entries[] | \"\(.key)<<$EOF\n\(.value)\n$EOF\n\""; }
@@ -95,5 +96,6 @@ jobs:
           KAMAL_REGISTRY_PASSWORD: ${{ steps.login-ecr.outputs[format('docker_password_{0}_dkr_ecr_us_east_1_amazonaws_com', secrets.AWS_ACCOUNT_ID)] }}
           VERSION: ${{ steps.meta.outputs.version }}
         run: |
+          bundle exec kamal traefik reboot -y
           bundle exec kamal deploy --skip-push --version=$VERSION
           echo "Visit me on [http://$KAMAL_SERVER_IP](http://$KAMAL_SERVER_IP) 🚀" >> $GITHUB_STEP_SUMMARY

@@ -2,10 +2,10 @@
 # Name of your application. Used to uniquely configure containers.
 # INFO: muss gleich sein zum Label "service" des zu deployende Dockerfile
 #       siehe: `../../nginx/Dockerfile`
-service: nginx
+service: insimodus
 
 # Name of the container image.
-image: m324/nginx
+image: m324/insimodus
 
 # Deploy to these servers.
 servers:
@@ -13,7 +13,7 @@ servers:
     hosts:
       - <%= ENV.fetch('KAMAL_SERVER_IP') %>
     options:
-      network: "kamal" # INFO: needs `docker network create kamal` on the servers!
+      network: 'kamal' # INFO: needs `docker network create kamal` on the servers!
 
 # Credentials for your image host.
 registry:
@@ -34,13 +34,12 @@ ssh:
 # Configure custom arguments for Traefik. Be sure to reboot traefik when you modify it.
 traefik:
   options:
-    network: "kamal" # INFO: needs `docker network create kamal` on the servers!
+    network: 'kamal' # INFO: needs `docker network create kamal` on the servers!
 
 # Configure a custom healthcheck (default is /up on port 3000)
 healthcheck:
   path: /up
   port: 3000
-
 # Inject ENV variables into containers (secrets come from .env).
 # Remember to run `kamal env push` after making changes!
 # INFO: Uncomment to add mysql to the server

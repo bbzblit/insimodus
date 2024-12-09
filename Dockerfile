@@ -10,12 +10,19 @@ RUN npm i
 
 RUN npm run build
 
-FROM nginx:1.27.2-alpine
+FROM ubuntu:24.10
 
 LABEL service="insimodus"
+
+# Install Nginx
+RUN apt-get -y update\
+  && apt-get -y install nginx git curl --no-install-recommends\
+  && rm -rf /var/lib/apt/lists/*
 
 COPY --from=build-stage /workdir/dist/ /usr/share/nginx/html
 
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
 
 EXPOSE 3000/tcp
+
+CMD ["/usr/sbin/nginx", "-g", "daemon off;"]
