@@ -15,7 +15,22 @@ permissions:
   contents: read
 
 jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22 # lts
+          cache: 'npm'
+          cache-dependency-path: ./package-lock.json
+      - name: Test
+        working-directory: .
+        run: npm ci && npm run test
   deploy:
+    needs: test
     name: Deploy
     runs-on: ubuntu-latest
     environment: aws
