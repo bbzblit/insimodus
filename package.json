@@ -12,6 +12,7 @@
     "test": "vitest",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --fix",
+    "lint:ci": "eslint . --output-file eslint_report.json --format json",
     "format": "prettier --write src/"
   },
   "dependencies": {

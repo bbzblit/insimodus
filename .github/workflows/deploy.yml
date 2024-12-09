@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   test:
-    name: Test
+    name: Lint & Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -26,9 +26,20 @@ jobs:
           node-version: 22 # lts
           cache: 'npm'
           cache-dependency-path: ./package-lock.json
+          name: Install Dependencies # neu eigener step
+        working-directory: .
+        run: npm ci
+      - name: Lint
+        working-directory: .
+        run: npm run lint:ci
+      - name: Annotate Code
+        uses: DerLev/eslint-annotations@v2
+        with:
+          eslint-report: ./eslint_report.json
+        continue-on-error: true
       - name: Test
         working-directory: .
-        run: npm ci && npm run test
+        run: npm run test:ci
   deploy:
     needs: test
     name: Deploy
