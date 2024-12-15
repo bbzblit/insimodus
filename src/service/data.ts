@@ -1,7 +1,7 @@
 import type { Transaction } from "@/models/transaction";
 
 export function saveTransaction(transaction: Transaction): number {
-    let transactions = JSON.parse(localStorage.getItem("transactions") || "{}")
+    const transactions = JSON.parse(localStorage.getItem("transactions") || "{}")
 
     let maxIndex = 0;
 
@@ -22,7 +22,7 @@ export function saveTransaction(transaction: Transaction): number {
 }
 
 export function deleteTransaction(id: number) {
-    let transactions = JSON.parse(localStorage.getItem("transactions") || "{}")
+    const transactions = JSON.parse(localStorage.getItem("transactions") || "{}")
 
     delete transactions[id]
 
