@@ -4,7 +4,7 @@
         <h2 class="text-3xl text-white italic mb-4">Total amount: {{ totalAmount }}</h2>
         <h3 class="text-2xl text-white italic">Transaktonen</h3>
         <div class="h-3/4 py-12 w-1/2">
-            <div v-for="transaction in transactions" class="p-4 flex justify-between w-full">
+            <div v-for="transaction in transactions" class="p-4 flex justify-between w-full" v-bind:key="transaction.id">
                 <span class="text-white">{{ transaction.title }}</span>
                 <span class="text-white">{{ transaction.positiv ? "+" : "-" }}{{ transaction.amount }}</span>
             </div>
@@ -16,10 +16,10 @@
 </template>
 <script lang="ts">
 import type { Transaction } from '@/models/transaction';
-import { getTransactions, saveTransaction } from '@/service/data';
+import { getTransactions } from '@/service/data';
 
 export default {
-    name: "Dashboard",
+    name: "InsimodusDashboard",
     data(){
         return {
             transactions: [] as Transaction[]
