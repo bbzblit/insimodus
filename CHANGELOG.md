@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.1](https://github.com/bbzblit/insimodus/compare/v1.0.0...v1.0.1) (2025-01-06)
+
+
+### Bug Fixes
+
+* **pipeline:** Bugfix ([9de8093](https://github.com/bbzblit/insimodus/commit/9de809307d35b47a276c0629b5a9c311052efa84))
+* **pipeline:** Bugfix ([8d6424e](https://github.com/bbzblit/insimodus/commit/8d6424e1ed7175743e62a84249a9e0f7cbacc181))
+* **pipeline:** Bugfix ([f64a283](https://github.com/bbzblit/insimodus/commit/f64a2833773987eabaa51257811a6f165388fa9e))
+* **pipeline:** Bugfix ([e04d46d](https://github.com/bbzblit/insimodus/commit/e04d46d198b0b3dad0d0bf407d75bdaef73f972f))
+* **pipeline:** Fix ([1432c23](https://github.com/bbzblit/insimodus/commit/1432c2398fa3eec742de88d7e45c14ffcb58909a))
+* **pipeline:** Fix pipeline ([1a1def2](https://github.com/bbzblit/insimodus/commit/1a1def2c723bcf72920b056975a53e7c7ed50238))
+* **pipeline:** Removed unused step ([92f1a8a](https://github.com/bbzblit/insimodus/commit/92f1a8ae1f506287b2b51e98da922d3cb6430088))
+
 ## 1.0.0 (2024-12-16)
 
 
