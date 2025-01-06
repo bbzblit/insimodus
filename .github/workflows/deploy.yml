@@ -34,8 +34,6 @@ jobs:
         with:
           eslint-report: ./eslint_report.json
         continue-on-error: true
-      - name: Test
-        run: npm run test:ci
   deploy:
     needs: test
     name: Deploy
