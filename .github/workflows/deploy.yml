@@ -27,8 +27,6 @@ jobs:
           cache: 'npm'
           cache-dependency-path: ./package-lock.json
           name: Install Dependencies # neu eigener step
-        working-directory: .
-        run: npm ci
       - name: Lint
         working-directory: .
         run: npm run lint:ci
