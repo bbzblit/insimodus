@@ -28,8 +28,7 @@ jobs:
           cache-dependency-path: ./package-lock.json
           name: Install Dependencies # neu eigener step
       - name: Lint
-        working-directory: .
-        run: npm i 
+        run: npm i && npm run lint:ci
       - name: Annotate Code
         uses: DerLev/eslint-annotations@v2
         with:
