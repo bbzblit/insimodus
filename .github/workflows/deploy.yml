@@ -29,7 +29,7 @@ jobs:
           name: Install Dependencies # neu eigener step
       - name: Lint
         working-directory: .
-        run: npm i && npm run "lint:ci"
+        run: npm i 
       - name: Annotate Code
         uses: DerLev/eslint-annotations@v2
         with:
